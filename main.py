@@ -1,6 +1,7 @@
 from network import get_categories, get_questions
 from question import Question, MultipleChoiceQuestion
 from quiz_control import QuizControl
+from colorama import Back, Style
 
 if __name__ == '__main__':
     user_choice = 0
@@ -51,8 +52,8 @@ if __name__ == '__main__':
                 print(f'Please answer with {quiz_controller.current_question.acceptable_answers}')
         print(quiz_controller.current_question.answer)
         if quiz_controller.check_answer(user_answer):
-            print("That is correct.")
+            print(f"{Back.GREEN}That is correct.{Style.RESET_ALL}")
         else:
-            print("Sorry, that was wrong.")
+            print(f"{Back.RED}Sorry, that was wrong.{Style.RESET_ALL}")
 
     print(f'Your score is {quiz_controller.score}/10')
