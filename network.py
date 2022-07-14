@@ -8,7 +8,7 @@ def get_categories() -> dict:
     return {category.get('id'): category.get('name') for category in response.json()['trivia_categories']}
 
 
-def get_questions(amount: int, category: str) -> list:
+def get_questions(amount: int, category: int) -> list:
     params = {
         'amount': amount,
         'category': category
