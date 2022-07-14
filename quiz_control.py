@@ -34,9 +34,8 @@ class QuizControl:
         else:
             return False
 
-    @property
-    def score(self):
-        return self._score
+    def report_score(self):
+        print(f'Your score is {self._score}/{len(self._question_list)} with an accuracy of {self._score / len(self._question_list) * 100:.2f}%')
 
     @property
     def current_question(self):

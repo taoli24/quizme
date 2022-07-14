@@ -101,5 +101,4 @@ if __name__ == '__main__':
 
 
     # report score
-    print(
-        f'Your score is {quiz_controller.score}/{number_questions} with an accuracy of {quiz_controller.score / number_questions * 100:.2f}%')
+    quiz_controller.report_score()
