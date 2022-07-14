@@ -3,6 +3,16 @@ from question import Question, MultipleChoiceQuestion
 from quiz_control import QuizControl
 from colorama import Back, Style
 from html import unescape
+from logo import logo
+
+
+def display_logo(logo_art):
+    """
+    display ascii art of the game
+    :param logo_art:
+    :return: None
+    """
+    print(logo_art)
 
 
 def display_category(category_dict: dict) -> None:
@@ -78,6 +88,7 @@ def get_quiz_list(number_of_questions: int, user_choice_of_category: int) -> lis
 
 
 if __name__ == '__main__':
+    display_logo(logo)
     # retrieve categories from public api
     categories = get_categories()
     # display categories to user
@@ -98,7 +109,8 @@ if __name__ == '__main__':
         if quiz_controller.check_answer(user_answer):
             print(f"{Back.GREEN}That was correct.{Style.RESET_ALL}\n")
         else:
-            print(f"{Back.RED}Sorry, that was wrong.{Style.RESET_ALL}\nThe correct answer is {unescape(quiz_controller.current_question.answer)}.\n")
+            print(
+                f"{Back.RED}Sorry, that was wrong.{Style.RESET_ALL}\nThe correct answer is {unescape(quiz_controller.current_question.answer)}.\n")
 
     # report score
     quiz_controller.report_score()

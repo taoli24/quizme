@@ -5,7 +5,7 @@ import os
 
 
 class QuizControl:
-    def __init__(self, q_list: list, q_category):
+    def __init__(self, q_list: list, q_category: str):
         self._question_number = 0
         self._score = 0
         self._question_list = q_list
@@ -27,7 +27,7 @@ class QuizControl:
                 q_text += f'{key}. {unescape(self._current_question.answer_list[key])}\n'
         return q_text
 
-    def check_answer(self, user_answer):
+    def check_answer(self, user_answer: str) -> bool:
         user_answer = user_answer if self._current_question.type == 'boolean' else self._current_question.answer_list.get(
             user_answer)
         correct_answer = self._current_question.answer
