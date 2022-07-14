@@ -56,4 +56,4 @@ if __name__ == '__main__':
         else:
             print(f"{Back.RED}Sorry, that was wrong.{Style.RESET_ALL}")
 
-    print(f'Your score is {quiz_controller.score}/10')
+    print(f'Your score is {quiz_controller.score}/10 with an accuracy of {quiz_controller.score/10*100:.2f}%')
