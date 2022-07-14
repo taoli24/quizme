@@ -4,6 +4,10 @@ from quiz_control import QuizControl
 from colorama import Back, Style
 from html import unescape
 from logo import logo
+import os
+import sys
+
+log_file = 'log.txt'
 
 
 def display_logo(logo_art):
@@ -13,6 +17,26 @@ def display_logo(logo_art):
     :return: None
     """
     print(logo_art)
+
+
+def choose_game_mode():
+    mode = input('Would you like to start a new game? (y/n): ').lower()
+    if mode == 'report':
+        if os.path.exists(log_file):
+            with open(log_file, mode='r') as file:
+                print(file.read())
+        else:
+            print(f'{log_file} does not exist, play a game first!')
+
+    elif mode == 'y':
+        return True
+    elif mode == 'n':
+        print('Bye bye!')
+        sys.exit(0)
+    else:
+        print('Unknown command.')
+
+    return choose_game_mode()
 
 
 def display_category(category_dict: dict) -> None:
@@ -89,30 +113,35 @@ def get_quiz_list(number_of_questions: int, user_choice_of_category: int) -> lis
 
 if __name__ == '__main__':
     display_logo(logo)
-    # retrieve categories from public api
-    categories = get_categories()
-    # display categories to user
-    display_category(categories)
-    # verify and get user input
-    number_questions, user_choice = verify_user_choice(categories)
-    # initialise quiz controller object
-    quiz_controller = QuizControl(get_quiz_list(number_questions, user_choice), categories.get(user_choice))
+    # choose game mode
+    game_on = choose_game_mode()
+    while game_on:
+        # retrieve categories from public api
+        categories = get_categories()
+        # display categories to user
+        display_category(categories)
+        # verify and get user input
+        number_questions, user_choice = verify_user_choice(categories)
+        # initialise quiz controller object
+        quiz_controller = QuizControl(get_quiz_list(number_questions, user_choice), categories.get(user_choice))
 
-    # main logic - run when there is still questions
-    while quiz_controller.still_has_questions():
-        user_answer = None
-        question_text = quiz_controller.next_question()
-        while user_answer not in quiz_controller.current_question.acceptable_answers:
-            user_answer = input(f'\n{question_text}\nYour answer: ')
-            if user_answer not in quiz_controller.current_question.acceptable_answers:
-                print(f'Please answer with {quiz_controller.current_question.acceptable_answers}')
-        if quiz_controller.check_answer(user_answer):
-            print(f"{Back.GREEN}That was correct.{Style.RESET_ALL}\n")
-        else:
-            print(
-                f"{Back.RED}Sorry, that was wrong.{Style.RESET_ALL}\nThe correct answer is {unescape(quiz_controller.current_question.answer)}.\n")
+        # main logic - run when there is still questions
+        while quiz_controller.still_has_questions():
+            user_answer = None
+            question_text = quiz_controller.next_question()
+            while user_answer not in quiz_controller.current_question.acceptable_answers:
+                user_answer = input(f'\n{question_text}\nYour answer: ')
+                if user_answer not in quiz_controller.current_question.acceptable_answers:
+                    print(f'Please answer with {quiz_controller.current_question.acceptable_answers}')
+            if quiz_controller.check_answer(user_answer):
+                print(f"{Back.GREEN}That was correct.{Style.RESET_ALL}\n")
+            else:
+                print(
+                    f"{Back.RED}Sorry, that was wrong.{Style.RESET_ALL}\nThe correct answer is {unescape(quiz_controller.current_question.answer)}.\n")
 
-    # report score
-    quiz_controller.report_score()
-    # output quiz result to log file
-    quiz_controller.output_log()
+        # report score
+        quiz_controller.report_score()
+        # output quiz result to log file
+        quiz_controller.output_log()
+        # check if start a new game
+        choose_game_mode()
