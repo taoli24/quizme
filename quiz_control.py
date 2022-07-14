@@ -1,12 +1,15 @@
 from html import unescape
-from colorama import Back, Style
+from colorama import Back, Style, Fore
+import datetime as dt
+import os
 
 
 class QuizControl:
-    def __init__(self, q_list: list):
+    def __init__(self, q_list: list, q_category):
         self._question_number = 0
         self._score = 0
         self._question_list = q_list
+        self._category = q_category
         self._current_question = None
 
     def still_has_questions(self):
@@ -35,7 +38,14 @@ class QuizControl:
             return False
 
     def report_score(self):
-        print(f'Your score is {self._score}/{len(self._question_list)} with an accuracy of {self._score / len(self._question_list) * 100:.2f}%')
+        print(
+            f'{Fore.YELLOW}Game finished! Your score is {self._score}/{len(self._question_list)} with an accuracy of {self._score / len(self._question_list) * 100:.2f}%{Style.RESET_ALL}')
+
+    def output_log(self):
+        file = 'log.txt'
+        with open(file, mode='a') as file:
+            file.write(
+                f"{dt.datetime.now().strftime('%d/%m/%Y %H:%M')} {os.environ.get('USER', 'User')} did quizzes in [{self._category}] and achieved {self._score}/{len(self._question_list)} with an accuracy of {self._score / len(self._question_list) * 100:.2f}%\n")
 
     @property
     def current_question(self):

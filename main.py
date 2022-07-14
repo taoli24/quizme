@@ -2,6 +2,7 @@ from network import get_categories, get_questions
 from question import Question, MultipleChoiceQuestion
 from quiz_control import QuizControl
 from colorama import Back, Style
+from html import unescape
 
 
 def display_category(category_dict: dict) -> None:
@@ -84,7 +85,7 @@ if __name__ == '__main__':
     # verify and get user input
     number_questions, user_choice = verify_user_choice(categories)
     # initialise quiz controller object
-    quiz_controller = QuizControl(get_quiz_list(number_questions, user_choice))
+    quiz_controller = QuizControl(get_quiz_list(number_questions, user_choice), categories.get(user_choice))
 
     # main logic - run when there is still questions
     while quiz_controller.still_has_questions():
@@ -97,8 +98,9 @@ if __name__ == '__main__':
         if quiz_controller.check_answer(user_answer):
             print(f"{Back.GREEN}That was correct.{Style.RESET_ALL}\n")
         else:
-            print(f"{Back.RED}Sorry, that was wrong.{Style.RESET_ALL}\nThe correct answer is {quiz_controller.current_question.answer}.\n")
-
+            print(f"{Back.RED}Sorry, that was wrong.{Style.RESET_ALL}\nThe correct answer is {unescape(quiz_controller.current_question.answer)}.\n")
 
     # report score
     quiz_controller.report_score()
+    # output quiz result to log file
+    quiz_controller.output_log()
