@@ -4,3 +4,5 @@
 14/07/2022 19:43 User did quizzes in [General Knowledge] and achieved 6/10 with an accuracy of 60.00%
 14/07/2022 19:44 User did quizzes in [Sports] and achieved 5/10 with an accuracy of 50.00%
 14/07/2022 19:46 lee did quizzes in [Science: Computers] and achieved 4/10 with an accuracy of 40.00%
+14/07/2022 20:02 lee did quizzes in [General Knowledge] and achieved 4/10 with an accuracy of 40.00%
+14/07/2022 20:11 lee did quizzes in [Art] and achieved 1/10 with an accuracy of 10.00%

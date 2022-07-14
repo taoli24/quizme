@@ -7,7 +7,7 @@ from logo import logo
 import os
 import sys
 
-log_file = 'log.txt'
+LOG_FILE = 'log.txt'
 
 
 def display_logo(logo_art):
@@ -20,13 +20,18 @@ def display_logo(logo_art):
 
 
 def choose_game_mode():
+    """
+    Mode choosing function and check whether user has made correct choice,
+    otherwise this function runs recursively
+    :return: bool
+    """
     mode = input('Would you like to start a new game? (y/n): ').lower()
     if mode == 'report':
-        if os.path.exists(log_file):
-            with open(log_file, mode='r') as file:
+        if os.path.exists(LOG_FILE):
+            with open(LOG_FILE, mode='r') as file:
                 print(file.read())
         else:
-            print(f'{log_file} does not exist, play a game first!')
+            print(f'{LOG_FILE} does not exist, play a game first!')
 
     elif mode == 'y':
         return True
@@ -142,6 +147,6 @@ if __name__ == '__main__':
         # report score
         quiz_controller.report_score()
         # output quiz result to log file
-        quiz_controller.output_log()
+        quiz_controller.output_log(LOG_FILE)
         # check if start a new game
         choose_game_mode()

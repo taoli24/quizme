@@ -12,10 +12,10 @@ class QuizControl:
         self._category = q_category
         self._current_question = None
 
-    def still_has_questions(self):
+    def still_has_questions(self) -> bool:
         return self._question_number < len(self._question_list)
 
-    def next_question(self):
+    def next_question(self) -> str:
         self._current_question = self._question_list[self._question_number]
         self._question_number += 1
         q_text = unescape(self._current_question.text)
@@ -41,8 +41,7 @@ class QuizControl:
         print(
             f'{Fore.YELLOW}Game finished! Your score is {self._score}/{len(self._question_list)} with an accuracy of {self._score / len(self._question_list) * 100:.2f}%{Style.RESET_ALL}')
 
-    def output_log(self):
-        file = 'log.txt'
+    def output_log(self, file: str):
         with open(file, mode='a') as file:
             file.write(
                 f"{dt.datetime.now().strftime('%d/%m/%Y %H:%M')} {os.environ.get('USER', 'User')} did quizzes in [{self._category}] and achieved {self._score}/{len(self._question_list)} with an accuracy of {self._score / len(self._question_list) * 100:.2f}%\n")
