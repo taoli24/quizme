@@ -51,9 +51,13 @@ def display_category(category_dict: dict) -> None:
     :param category_dict: dict
     :return: None
     """
-    print('\nChoose a category from below.\n')
+    print('\n╔{:═^98}╗'.format('Choose a category from below.'))
     for key in category_dict:
-        print(f"{key - 8} --- {categories.get(key)}")
+        if (+key) % 2 == 1:
+            sys.stdout.write(f"║  {key - 8:>2} --- {categories.get(key):<40}")
+        else:
+            sys.stdout.write(f"{key - 8:>2} --- {categories.get(key):<40}  ║\n")
+    print('╚{:═^98}╝\n'.format(''))
 
 
 def verify_user_choice(category_dict: dict) -> tuple:
