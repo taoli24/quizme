@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ "$1" == "log" ] && [ $# -eq 1 ]; then
+if [ "$1" == "--log" ] && [ $# -eq 1 ]; then
   if [[ -e log.txt ]]; then
     cat log.txt
   else

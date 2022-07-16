@@ -1,0 +1,6 @@
+Usage: ./run_quiz.sh
+Usage: ./run_quiz.sh [options]
+
+Options:
+    --help                Display help
+    --log                 Display quiz log
