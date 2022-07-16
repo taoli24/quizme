@@ -1,6 +1,6 @@
-clear
+#!/bin/bash
 
-if [[ "$1" == "log" ]]; then
+if [ "$1" == "log" ] && [ $# -eq 1 ]; then
   if [[ -e log.txt ]]; then
     cat log.txt
   else
@@ -8,6 +8,7 @@ if [[ "$1" == "log" ]]; then
   fi
 
 else
+  clear
   python3 main.py
 fi
 
