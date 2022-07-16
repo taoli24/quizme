@@ -1,8 +1,2 @@
-14/07/2022 19:20 User did quizzes in [General Knowledge] and achieved 3/10 with an accuracy of 30.00%
-14/07/2022 19:32 User did quizzes in [General Knowledge] and achieved 2/10 with an accuracy of 20.00%
-14/07/2022 19:41 User did quizzes in [Animals] and achieved 4/10 with an accuracy of 40.00%
-14/07/2022 19:43 User did quizzes in [General Knowledge] and achieved 6/10 with an accuracy of 60.00%
-14/07/2022 19:44 User did quizzes in [Sports] and achieved 5/10 with an accuracy of 50.00%
-14/07/2022 19:46 lee did quizzes in [Science: Computers] and achieved 4/10 with an accuracy of 40.00%
-14/07/2022 20:02 lee did quizzes in [General Knowledge] and achieved 4/10 with an accuracy of 40.00%
-14/07/2022 20:11 lee did quizzes in [Art] and achieved 1/10 with an accuracy of 10.00%
+16/07/2022 21:07 lee did quizzes in [Entertainment: Film] and achieved 4/11 with an accuracy of 36.36%
+16/07/2022 21:07 lee did quizzes in [Entertainment: Musicals & Theatres] and achieved 2/12 with an accuracy of 16.67%

@@ -67,7 +67,7 @@ def verify_user_choice(category_dict: dict) -> tuple:
     number_of_questions = 0
     while choice not in [key - 8 for key in category_dict.keys()]:
         try:
-            choice = int(input('\nChoose one of above categories: '))
+            choice = int(input('\nYour choice: '))
         except ValueError:
             print('Please enter a valid number for your choice. ')
             continue
@@ -76,7 +76,7 @@ def verify_user_choice(category_dict: dict) -> tuple:
 
     while number_of_questions > 50 or number_of_questions < 10:
         try:
-            number_of_questions = int(input('\nHow many questions would you like to do: (10-50) '))
+            number_of_questions = int(input('\nHow many questions would you like to do (10-50): '))
         except ValueError:
             print('Please enter a valid number for your choice. ')
             continue
@@ -149,4 +149,4 @@ if __name__ == '__main__':
         # output quiz result to log file
         quiz_controller.output_log(LOG_FILE)
         # check if start a new game
-        choose_game_mode()
+        game_on = choose_game_mode()
