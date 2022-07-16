@@ -25,7 +25,7 @@ def choose_game_mode():
     otherwise this function runs recursively
     :return: bool
     """
-    mode = input('Would you like to start a new game? (y/n): ').lower()
+    mode = input('\nWould you like to start a new game? (y/n): ').lower()
     if mode == 'report':
         if os.path.exists(LOG_FILE):
             with open(LOG_FILE, mode='r') as file:
@@ -51,7 +51,7 @@ def display_category(category_dict: dict) -> None:
     :param category_dict: dict
     :return: None
     """
-    print('Choose a category from below.\n')
+    print('\nChoose a category from below.\n')
     for key in category_dict:
         print(f"{key - 8} --- {categories.get(key)}")
 

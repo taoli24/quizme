@@ -13,9 +13,18 @@ class QuizControl:
         self._current_question = None
 
     def still_has_questions(self) -> bool:
+        """
+        function check if there is still questions left
+        :return: bool
+        """
         return self._question_number < len(self._question_list)
 
     def next_question(self) -> str:
+        """
+        function set current question to the next question and return the question text
+        :return: question text: str
+        """
+
         self._current_question = self._question_list[self._question_number]
         self._question_number += 1
         q_text = unescape(self._current_question.text)
@@ -28,6 +37,12 @@ class QuizControl:
         return q_text
 
     def check_answer(self, user_answer: str) -> bool:
+        """
+        check user answer against the correct answer, return True if match otherwise False
+        :param user_answer:
+        :return: bool
+        """
+
         user_answer = user_answer if self._current_question.type == 'boolean' else self._current_question.answer_list.get(
             user_answer)
         correct_answer = self._current_question.answer
@@ -38,10 +53,19 @@ class QuizControl:
             return False
 
     def report_score(self):
+        """
+        Print quiz result to the console
+        :return: None
+        """
         print(
             f'{Fore.YELLOW}Game finished! Your score is {self._score}/{len(self._question_list)} with an accuracy of {self._score / len(self._question_list) * 100:.2f}%{Style.RESET_ALL}')
 
     def output_log(self, file: str):
+        """
+        output a log to chosen file path
+        :param file: str
+        :return: None
+        """
         with open(file, mode='a') as file:
             file.write(
                 f"{dt.datetime.now().strftime('%d/%m/%Y %H:%M')} {os.environ.get('USER', 'User')} did quizzes in [{self._category}] and achieved {self._score}/{len(self._question_list)} with an accuracy of {self._score / len(self._question_list) * 100:.2f}%\n")
