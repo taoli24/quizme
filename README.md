@@ -84,7 +84,7 @@ $ git clone https://github.com/taoli24/quizme.git
 ```
 2. **Run pip install to install required packages**
 ```shell
-$ pip install -r requirements.txt
+$ pip3 install -r requirements.txt
 ```
 3. **Run the following command to start the application**<br>
 
