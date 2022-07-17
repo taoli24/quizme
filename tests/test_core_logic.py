@@ -52,13 +52,15 @@ class TestCoreFunctions(unittest.TestCase):
     def test_check_correct_answers(self):
         # Create quiz_controller with known questions and answers
         test_quiz_controller = QuizControl(quiz_list, "Science: Computers")
-        # question1
+        # question 1 - 5
         for _ in range(5):
             test_quiz_controller.next_question()
             if test_quiz_controller.current_question.type == "boolean":
                 self.assertTrue(test_quiz_controller.check_answer(test_quiz_controller.current_question.answer))
             else:
-                correct_answer = list(test_quiz_controller.current_question.answer_list.keys())[list(test_quiz_controller.current_question.answer_list.values()).index(test_quiz_controller.current_question.answer)]
+                correct_answer = list(test_quiz_controller.current_question.answer_list.keys())[
+                    list(test_quiz_controller.current_question.answer_list.values()).index(
+                        test_quiz_controller.current_question.answer)]
                 self.assertTrue(test_quiz_controller.check_answer(correct_answer))
 
 
