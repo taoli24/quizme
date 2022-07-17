@@ -35,6 +35,13 @@ quiz_list = [
 
 
 class TestCoreFunctions(unittest.TestCase):
+    """
+    The main logics of quiz controller are being tested here.
+    The QuizControl class are responsible for handling display question text, check if there is more question left, check answers and some other functions
+    The two features which are tested here are:
+    - check if there are still questions left in the quizControl object
+    - check if ture is returned if correct answer is entered by user
+    """
 
     def test_still_has_questions(self):
         # Create quiz_controller with known questions and answers
