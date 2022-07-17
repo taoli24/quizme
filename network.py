@@ -63,4 +63,5 @@ def get_questions(amount: int, category: int) -> list:
 
 # testing function for the chosen API
 if __name__ == '__main__':
-    print(get_categories())
+    # print(get_categories())
+    print(get_questions(5, 18))
