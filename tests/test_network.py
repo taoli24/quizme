@@ -12,6 +12,13 @@ category = {9: 'General Knowledge', 10: 'Entertainment: Books', 11: 'Entertainme
 
 
 class TestNetworkFunctions(unittest.TestCase):
+    """
+    The purpose of  this test is to test correct functionality of network functions
+    Things that got tested:
+    - Correct quiz category are retrieved from the public API
+    - Correct numbers of questions are retrieved from the API
+    - Correct category of questions is retrieved from the API
+    """
 
     def test_get_category(self):
         self.assertEqual(network.get_categories(), category)
